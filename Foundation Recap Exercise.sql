@@ -22,6 +22,24 @@ c) only the Surgery wards
 */
 
 -- Write the SQL statement here
+SELECT
+    ps.AdmittedDate,
+    ps.DischargeDate, 
+    ps.Hospital, 
+    ps.Ward, 
+    ps.PatientId,DATEDIFF(DAY, ps.AdmittedDate,ps.DischargeDate) as LenghtofStay
+FROM
+    PatientStay ps
+WHERE ps.Hospital in ('Oxleas','PRUH')
+AND MONTH(ps.AdmittedDate) = 2
+AND ps.AdmittedDate BETWEEN '2024.02.01' AND '2024.02.29'
+AND ps.Ward LIKE '%Surgery'
+ORDER BY ps.AdmittedDate DESC , ps.PatientId DESC
+
+
+
+
+
 
 
 /*
